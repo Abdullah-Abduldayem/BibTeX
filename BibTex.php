@@ -392,7 +392,7 @@ class BibTex {
 	  // for things only needed once
   	  if ( (count($bibtexArray) == 0) && $wbib_allowdivpopup)
 	       $output .= '<link rel="stylesheet" type="text/css" href="'
-  	               . $wgScriptPath.'/extensions/BibTex/bibtex.css" />'."\n";
+  	               . $wgScriptPath.'/extensions/BibTeX/bibtex.css" />'."\n";
 	  
 	  // Writing the beginning of the entry
 
@@ -558,7 +558,7 @@ function renderBibtex( $input, $argv=0 )
      // if nothing is put into bibtex markups then warn people
      // and display help message
      if ((count($bibtexArray) == 0) && $wbib_usejavascript)
-	  $output .= '<script language="javascript" src="'.$wgScriptPath.'/extensions/BibTex/bibtex.js"></script>'."\n";	
+	  $output .= '<script language="javascript" src="'.$wgScriptPath.'/extensions/BibTeX/bibtex.js"></script>'."\n";
 
      if (preg_match('/^\s*$/', $input) ) {	     
 	  $output .= wfMsg( 'bibtex_empty')."\n";
