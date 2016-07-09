@@ -350,9 +350,9 @@ class BibTex {
 		      $field_name=trim(strtolower($field_name));
 		      $field_text=trim($field_text);
 		      
-		      if($wbibmacros[$field_text] != ""){
-			  $field_text = $wbibmacros[$field_text];
-		      }
+		      #if($wbibmacros[$field_text] != ""){
+			  #$field_text = $wbibmacros[$field_text];
+		      #}
 		      
 		      $this->entry->set_field($field_name,$field_text);
 		  }
