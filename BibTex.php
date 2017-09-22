@@ -410,19 +410,34 @@ class BibTex {
 		$output .= "<b>" . $entry->get_field('title') . "</b><br/>";
 		$output .= '<dl><dd>' . $entry->get_where_published() . ' ';
 
-		$output .= $entry->get_publishing_details()."</dd><dd>";
+		$output .= $entry->get_publishing_details()."</dd>";
+		
+		$create_external_links = $entry->get_field('pdf') . $entry->get_field('ps') . $entry->get_field('url') != "";
+		if ($create_external_links) {
+			$output .= "<dd>";
+		}
+		
 		// Checking if pdf file is there
 		if ( '' != $entry->get_field('pdf')) {
+			/*
 			$im = Image::newfromName($entry->get_field('pdf'));  
 			$im2 = Image::newFromName($wbib_pdficon);
 			if ( $this->allowed($im->getTitle()))
 			{
 				$output .= '<a href="'.$im->getUrl().'"><img src="'.$im2->getURL().'">PDF</a> ';
+				
+				$output .= '<a href="'.$im->getUrl().'"><img src="extensions/BibTex/pdf.png">PDF</a> ';
+				
 				array_push($bibtexArray, $entry->get_field('pdf'));
 			}
+			*/
+			
+			$output .= '<a href="'. $entry->get_field('pdf') .'"><img src="extensions/BibTex/pdf.png">PDF</a> ';
+			array_push($bibtexArray, $entry->get_field('pdf'));
 		}
 		// Checking if ps file is there
 		if ( '' != $entry->get_field('ps')) {
+			/*
 			$im = Image::newfromName($entry->get_field('ps'));
 			$im2 = Image::newFromName($wbib_psicon);
 			if ($this->allowed($im->getTitle()))
@@ -430,6 +445,10 @@ class BibTex {
 				$output .= '<a href="'.$im->getUrl().'"><img src="'.$im2->getURL().'">Postscript</a> ';
 				array_push($bibtexArray, $entry->get_field('ps'));
 			}
+			*/
+			
+			$output .= '<a href="'.$entry->get_field('ps').'"><img src="extensions/BibTex/ps.png">Postscript</a> ';
+			array_push($bibtexArray, $entry->get_field('ps'));
 		}
 		// Checking for url
 		if ( '' != $entry->get_field('url')) {
@@ -443,7 +462,11 @@ class BibTex {
 				$url = 'http://' . ltrim($url, '/');
 			}
 			
-			$output .= '<a href="' . $url  . '">' . $url . '</a><br>';  
+			$output .= '<a href="'. $url .'"><img src="extensions/BibTex/url.png">External URL</a>';  
+		}
+		
+		if ($create_external_links) {
+			$output .= "</dd>";
 		}
 
 		global $wbibauthor,$wbibtitle,$wbibin,$wbibaddress,$wbibdate;
@@ -453,6 +476,7 @@ class BibTex {
 		$shouldlink = $wbib_allow_divpopup || ($wbib_allow_bibpopup && $wbib_usejavascript);
 		
 		if ($shouldlink) {
+			$output .= '<dd>';
 			$output .= '<a class="bibtex" href="';
 			if ($wbib_allow_bibpopup && $wbib_usejavascript) {
 				$output .= "javascript:bibpopup('".$entry->get_content()."')\">Bibtex";
