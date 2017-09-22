@@ -11,9 +11,8 @@ Features
 - A div popup demo (not IE compliant nor XHTML transitional)
 
 
-1. Install/Files
+1 - Install/Files
 ================
-
 Unpack the extension archive into the extensions directory of your
 mediawiki root.
 
@@ -37,7 +36,7 @@ Several files are unpacked:
 - bibstyle.php : a file containing all the configuration variables of the extension
 
 
-2. Setup and configuration
+2 - Setup and configuration
 ==========================
 
 Edit your bibstyle.php file. 
@@ -54,10 +53,10 @@ There are also two special variables:
 `$wbib_pdficon` and `$wbib_psicon` : you should give for them the name of an image file you uploaded on your mediawiki server. It allows to change these icons later without having to use something else than a web browser. So do not forget to put an image.
 
 
-3. Use and online help mechanism
-===============================
+3 - Use and online help mechanism
+================================
 
-If you want to put a bibtex reference into the page you're editing, just put it between `<bibtex>` and `</bibtex>` tags.
+To add a bibtex reference, put it between `<bibtex>` and `</bibtex>` tags.
 
 If you forget the bibtex syntax or parameters, you can use the help mechanism.
 If you only put whitespaces between your `<bibtex>` markups and click
@@ -82,10 +81,10 @@ when you put the mouse over the link.
 If bibpopup is enabled, then if you click on the link, an ACM-like popup will
 appear containing the rawtext of the bibtex entry.
 
-4. Examples of templates that use BibTex
-=============================================
+4 - Examples of templates that use BibTex
+========================================
 
-4.1 Template:Bibtex
+4.a - Template:Bibtex
 -------------------
 To use this template, each reference has its own template page in the form `Template:Bibtex/id`. This template transcludes the contents of that sub-template and can be used many times.
 
@@ -99,7 +98,7 @@ To use this template, use:
 {{Bibtex|id}}
 ```
 
-4.2 Template:refa
+4.2 - Template:refa
 -----------------
 
 The template code is as follows:
@@ -109,12 +108,12 @@ The template code is as follows:
 
 This creates a link to the reference's template page.
 
-4.3 Misc
+4.3 - Misc
 --------
 The bibtex extension was developed with these kinds of templates and use-cases in mind. You may find it appropriate to create a specific namespace called Bibtex and modify the above templates accordingly.
 
 
-5. Credits and people who provided help
+5 - Credits and people who provided help
 =======================================
 I wish to thank :
 - Vincent Le Ligeour for the divpopup demo
@@ -123,5 +122,5 @@ I wish to thank :
 - Louis-Philippe Morency who informed me about the status of the bibtex class developed by Kinh Tieu.
 
 
-  Jean-Yves Didier -- Thu, Jul 27, 2006  
+    Jean-Yves Didier -- Thu, Jul 27, 2006  
 
