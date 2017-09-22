@@ -11,12 +11,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionCredits['parserhook'][] = array(
-'path' => __FILE__,
-'name' => 'BibTex',
-'author' =>'Simson L. Garfinkel', 
-'url' => 'http://simson.net/wiki/BibTex_Extension', 
-'description' => 'This extension adds support for the BibTex tag',
-'version'  => 1.0.2,
+	'path' => __FILE__,
+	'name' => 'BibTex',
+	'author' =>'Simson L. Garfinkel', 
+	'url' => 'http://simson.net/wiki/BibTex_Extension', 
+	'description' => 'This extension adds support for the BibTex tag',
+	'version'  => "1.0.2",
 );
 
 // First declaration for mediawiki bibtex extension
@@ -387,8 +387,8 @@ class BibTex {
 		global $wgScriptPath;
 		global $wgUploadPath;
 		global $bibtexArray;
-		global $wbib_allowdivpopup;
-		global $wbib_allowbibpopup;
+		global $wbib_allow_divpopup;
+		global $wbib_allow_bibpopup;
 		global $wbib_usejavascript;
 		global $wbib_pdficon;
 		global $wbib_psicon;
@@ -397,7 +397,7 @@ class BibTex {
 		$output='';
 
 		// for things only needed once
-		if ( (count($bibtexArray) == 0) && $wbib_allowdivpopup)
+		if ( (count($bibtexArray) == 0) && $wbib_allow_divpopup)
 		$output .= '<link rel="stylesheet" type="text/css" href="'
 		. $wgScriptPath.'/extensions/BibTeX/bibtex.css" />'."\n";
 		
@@ -417,7 +417,7 @@ class BibTex {
 			$im2 = Image::newFromName($wbib_pdficon);
 			if ( $this->allowed($im->getTitle()))
 			{
-				$output .= '<a href="'.$im->getUrl().'"><img src="'.$im2->getURL().'">Pdf</a> ';
+				$output .= '<a href="'.$im->getUrl().'"><img src="'.$im2->getURL().'">PDF</a> ';
 				array_push($bibtexArray, $entry->get_field('pdf'));
 			}
 		}
@@ -450,16 +450,17 @@ class BibTex {
 		//$output .= "<a class=\"bibtex\">".$entry->get_shortName();
 
 		// This for a div popup demonstration
-		$shouldlink = $wbib_allowdivpopup || ($wbib_allowbibpopup && $wbib_usejavascript) ;
+		$shouldlink = $wbib_allow_divpopup || ($wbib_allow_bibpopup && $wbib_usejavascript);
+		
 		if ($shouldlink) {
 			$output .= '<a class="bibtex" href="';
-			if ($wbib_allowbibpopup && $wbib_usejavascript) {
+			if ($wbib_allow_bibpopup && $wbib_usejavascript) {
 				$output .= "javascript:bibpopup('".$entry->get_content()."')\">Bibtex";
 			}
 			else
 			$output .= '#">Bibtex';
 
-			if ($wbib_allowdivpopup) {
+			if ($wbib_allow_divpopup) {
 				$output .= "<div>";
 				$output .= "<b>$wbibauthor : </b>".$entry->get_field('author')."<br/>";
 				$output .= "<b>$wbibtitle : </b>".$entry->get_field('title')."<br/>";

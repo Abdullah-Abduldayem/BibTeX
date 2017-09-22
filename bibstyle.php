@@ -3,9 +3,9 @@
 $wbibLang = 'en'; 
 
 #Custom behaviour of extension
+$wbib_allow_bibpopup = true;             # Show a link called "BibTex". It can pop with the bibtex reference like in ACM libraries
+$wbib_allow_divpopup = true;             # Show a div popup when the cursor hovers over the "BibTeX" link
 $wbib_usejavascript  = true;             # Disable javascript
-$wbib_allowbibpopup  = true;             # Show a link called "BibTex". It can pop with the bibtex reference like in ACM libraries
-$wbib_allowdivpopup  = true;             # Show a div popup when the cursor hovers over the "BibTeX" link
 $wbib_medianamespace = "Image:";         # Medianamespace in which pdf and pstscript files are uploaded on wiki
 $wbib_pdficon        = "Pdf.png";        # The name of the icon for pdf files directly uploaded on wiki.
 $wbib_psicon         = "Postscript.png"; # The name of the icon for postscript file directly uploaded on wiki.
