@@ -12,6 +12,7 @@ a.bibtex div {
 	font-size: .9em;
 	padding: .8em;
 	opacity: 0.85;
+	z-index: 2;
 }
 a.bibtex:hover div {
 	display: block;
