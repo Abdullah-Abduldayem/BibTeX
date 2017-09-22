@@ -429,7 +429,16 @@ class BibTex {
 	  // Checking for url
 	  if ( '' != $entry->get_field('url')) {
 	      $url = $entry->get_field('url');
-	       $output .= '<a href="' . $url  . '">' . $url . '</a><br>';	
+				
+				// Remove preceding "@"
+				$url = ltrim($url, '@');
+				
+				$parsed = parse_url($url);
+				if (empty($parsed['scheme'])) {
+						$url = 'http://' . ltrim($url, '/');
+				}
+				
+	      $output .= '<a href="' . $url  . '">' . $url . '</a><br>';	
 	  }
 
 	  global $wbibauthor,$wbibtitle,$wbibin,$wbibaddress,$wbibdate;
